@@ -1,0 +1,67 @@
+  public function GetInternalDespency($today)
+    {
+        try
+        {
+            $sql = $this->conn->prepare("SELECT Distinct patient_medication.patientNo,patient.healthSchemeID,patient_medication.visitNo,patient.firstName,patient.middleName,patient.lastName,dob,telNumber,address from patient_medication,patient where 
+                    patient.patientNo=patient_medication.patientNo and  reportingDate = :td");
+                      $sql->execute(array(':td'=>$today));
+            
+            return $sql->fetchAll();
+        }
+        catch(PDOException $exception)
+        {
+            echo "Getting Data error: " . $exception->getMessage();
+        }
+    }
+
+    public function getPatientMedicine($patientNo,$today)
+    {
+        try
+        {
+            $sql = $this->conn->prepare("SELECT patient_medicationID,drugID,dose,patientNo,reportingDate from patient_medication where   patientNo = :patientNo and reportingDate = :td");
+                      $sql->execute(array(':patientNo'=>$patientNo,':td'=>$today));
+            
+            return $sql->fetchAll();
+        }
+        catch(PDOException $exception)
+        {
+            echo "Getting Data error: " . $exception->getMessage();
+        }
+    }
+
+    public function getDirectDispencingInfo()
+    {
+        try
+        {
+            $query=$this->conn->prepare("SELECT drugID,prediscribed_quantity,quantity_type  from patient_dispencing;");
+            $query->execute();
+            $data=array();
+            while($row=$query->fetch(PDO::FETCH_ASSOC))
+            {
+                $data[]=$row;
+            }
+            return $data;
+            
+        } catch (PDOException $ex) {
+            echo "Getting Data Error: ".$ex->getMessage();
+        }
+    }
+
+    public function getLastId()
+    {
+        try
+        {
+            $sql = $this->conn->prepare("SELECT max(despencingID) as Id from despencing");
+            $sql->execute();
+            $row=$sql->fetch(PDO::FETCH_ASSOC);
+
+            return $row['Id'];
+        }
+        catch(PDOException $exception)
+        {
+            echo "Getting Data error: " . $exception->getMessage();
+        }
+    }
+   
+    
+    

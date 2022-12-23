@@ -1,0 +1,24 @@
+SUPERUSERS
+	USERNAME:hmy@hmytechnologies.com
+    	PASSWORD:user
+
+
+HOSPITAL ADMINISTRATOR
+	USERNAME:abdulmajeedhajji@gmail.com
+    	PASSWORD:12345
+
+HOSPITAL DOCTOR
+	USERNAME:Arif.Haji
+    	PASSWORD:Hassan
+
+HOSPITAL RECEPTIONIST
+	USERNAME:Maryam.Rashid
+    	PASSWORD:Omar
+
+HOSPITAL TRIAGE NURSE
+	USERNAME:Salma.Issa
+    	PASSWORD:Haji
+
+
+	
+	
