@@ -39,8 +39,8 @@ $today = date("Y-m-d");
                     <li><a class="menu-item" href="index3.php?sp=suppliers"><i></i><span>Supplier</span></a></li>
                     <li><a class="menu-item" href="index3.php?sp=manufacturers"><i></i><span>Manufacturers</span></a></li>
 
-                    <!-- <li><a class="menu-item" href="index3.php?sp=healthfacility"><i></i><span>Product Pricing</span></a></li>
-                    <li><a class="menu-item" href="index3.php?sp=select_service"><i></i><span>Reorder Level</span></a>
+                    <li><a class="menu-item" href="index3.php?sp=product_types"><i></i><span>Product Types</span></a></li>
+                    <!-- <li><a class="menu-item" href="index3.php?sp=select_service"><i></i><span>Reorder Level</span></a>
                     </li>
                     <li><a class="menu-item" href="index3.php?sp=select_service"><i></i><span>Set Reorder Level</span></a>
                     </li>

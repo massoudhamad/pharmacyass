@@ -73,6 +73,9 @@ switch ((isset($_GET['sp']) ? $_GET['sp'] : '')) {
     case 'despencing':
         include('despencing.php');
         break;
+    case 'product_types':
+        include('product_types.php');
+        break;
 
 
 
