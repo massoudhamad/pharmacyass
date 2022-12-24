@@ -233,19 +233,20 @@ DROP TABLE IF EXISTS `manufacturer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `manufacturer` (
-  `manufacturer_id` int NOT NULL,
+  `manufacturer_id` int NOT NULL AUTO_INCREMENT,
   `manufacturer_name` varchar(150) NOT NULL,
   `status` int NOT NULL,
   `address_man` varchar(150) NOT NULL,
   `man_phone_no` varchar(150) NOT NULL,
-  `man_website` varchar(150) NOT NULL,
-  `man_person` varchar(145) NOT NULL,
+  `man_website` varchar(150) DEFAULT NULL,
+  `man_person` varchar(145) DEFAULT NULL,
   `man_email` varchar(45) NOT NULL,
   `modifiedDate` datetime NOT NULL,
   `createdBy` int NOT NULL,
   `createdDate` datetime NOT NULL,
-  PRIMARY KEY (`manufacturer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`manufacturer_id`),
+  UNIQUE KEY `manufacturer_id_UNIQUE` (`manufacturer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,37 +255,8 @@ CREATE TABLE `manufacturer` (
 
 LOCK TABLES `manufacturer` WRITE;
 /*!40000 ALTER TABLE `manufacturer` DISABLE KEYS */;
+INSERT INTO `manufacturer` VALUES (1,'Ngozi Pharmaceticial Company',1,'Mombasa','0778398441',NULL,NULL,'abdulmajeedhajji@gmail.com','2022-12-24 18:32:56',1,'2022-12-24 18:32:56');
 /*!40000 ALTER TABLE `manufacturer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `patient_dispencing`
---
-
-DROP TABLE IF EXISTS `patient_dispencing`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `patient_dispencing` (
-  `patient_despencingID` int NOT NULL AUTO_INCREMENT,
-  `despencingID` int DEFAULT NULL,
-  `drugID` int DEFAULT NULL,
-  `createdDate` datetime DEFAULT NULL,
-  `modifiedDate` datetime DEFAULT NULL,
-  `createdBy` int DEFAULT NULL,
-  `patientNo` varchar(100) DEFAULT NULL,
-  `prediscribed_quantity` int DEFAULT NULL,
-  `quantity_type` int DEFAULT NULL,
-  PRIMARY KEY (`patient_despencingID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `patient_dispencing`
---
-
-LOCK TABLES `patient_dispencing` WRITE;
-/*!40000 ALTER TABLE `patient_dispencing` DISABLE KEYS */;
-/*!40000 ALTER TABLE `patient_dispencing` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -298,6 +270,7 @@ CREATE TABLE `product_type` (
   `product_type_id` int NOT NULL AUTO_INCREMENT,
   `product_type_name` varchar(45) DEFAULT NULL,
   `product_type_description` varchar(145) DEFAULT NULL,
+  `status` int DEFAULT NULL,
   `createdDate` varchar(45) DEFAULT NULL,
   `modifiedDate` datetime DEFAULT NULL,
   `createdBy` int DEFAULT NULL,
@@ -335,6 +308,43 @@ CREATE TABLE `quantity_type` (
 LOCK TABLES `quantity_type` WRITE;
 /*!40000 ALTER TABLE `quantity_type` DISABLE KEYS */;
 /*!40000 ALTER TABLE `quantity_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `recieved_items`
+--
+
+DROP TABLE IF EXISTS `recieved_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `recieved_items` (
+  `recieved_items_id` int NOT NULL AUTO_INCREMENT,
+  `item_id` int DEFAULT NULL,
+  `supplier_id` int DEFAULT '1',
+  `manufacturer_id` int DEFAULT '1',
+  `manufactured_date` datetime DEFAULT NULL,
+  `expire_date` datetime DEFAULT NULL,
+  `item_type` varchar(45) DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `medi_type` varchar(45) DEFAULT NULL,
+  `createdDate` datetime DEFAULT NULL,
+  `price` int DEFAULT NULL,
+  `modifiedDate` datetime DEFAULT NULL,
+  `createdBy` int DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  PRIMARY KEY (`recieved_items_id`),
+  UNIQUE KEY `item_id_UNIQUE` (`item_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recieved_items`
+--
+
+LOCK TABLES `recieved_items` WRITE;
+/*!40000 ALTER TABLE `recieved_items` DISABLE KEYS */;
+INSERT INTO `recieved_items` VALUES (1,1,1,1,'2022-12-23 00:00:00','2022-12-27 00:00:00','Others',340,'','2022-12-24 18:40:37',500,'2022-12-24 18:40:37',1,1);
+/*!40000 ALTER TABLE `recieved_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -473,12 +483,13 @@ CREATE TABLE `store` (
   `item_name` varchar(145) DEFAULT NULL,
   `item_description` varchar(145) DEFAULT NULL,
   `status` int DEFAULT NULL,
+  `quantity` varchar(245) DEFAULT NULL,
   `createdDate` datetime DEFAULT NULL,
   `modifiedDate` datetime DEFAULT NULL,
   `createdBy` int DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   UNIQUE KEY `item_id_UNIQUE` (`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -487,6 +498,7 @@ CREATE TABLE `store` (
 
 LOCK TABLES `store` WRITE;
 /*!40000 ALTER TABLE `store` DISABLE KEYS */;
+INSERT INTO `store` VALUES (1,'Panadol','This si Panadol Description',1,'340','2022-12-24 14:28:43','2022-12-24 18:40:37',1),(2,'Citrozen','Speacila Medicine Item for Sleeping',1,NULL,'2022-12-24 14:32:50','2022-12-24 14:32:50',1),(3,'Magnezium','Medicine Spacial for Gas in the stomach',1,NULL,'2022-12-24 14:37:15','2022-12-24 14:37:15',1),(4,'Nivea Deoderant','Deodorant form body odor',1,NULL,'2022-12-24 14:37:57','2022-12-24 14:37:57',1);
 /*!40000 ALTER TABLE `store` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -507,9 +519,10 @@ CREATE TABLE `suppliers` (
   `createdDate` datetime DEFAULT NULL,
   `modifiedDate` datetime DEFAULT NULL,
   `createdBy` int DEFAULT NULL,
+  `status` int DEFAULT NULL,
   PRIMARY KEY (`supplier_id`),
   UNIQUE KEY `supplier_id_UNIQUE` (`supplier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -518,6 +531,7 @@ CREATE TABLE `suppliers` (
 
 LOCK TABLES `suppliers` WRITE;
 /*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
+INSERT INTO `suppliers` VALUES (1,'Izmir Suppliers LImited','Juma Makme Haji','Mombasa','abdulmajeedhajji@gmail.com','0778398441','2022-12-24 18:22:05','2022-12-24 18:22:05',1,1);
 /*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -602,4 +616,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-24 12:07:38
+-- Dump completed on 2022-12-24 19:11:26
