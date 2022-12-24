@@ -150,43 +150,42 @@ unset($_SESSION['msg']);
                 <h4 class="modal-title" id="myModalLabel">Add New Supplier</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form method="Post" action="action_users.php" id='cadree'>
+            <form method="Post" action="action_manufacturer.php" id='cadree'>
                 <div class="modal-body">
-                    <input type="hidden" id="lname" name="hospitalCode" value="<?php echo  $hospital_code ?>" />
                     <div class="row">
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="Cadre">Supplier Name: </label>
-                                <input type="text" id="lname" name="fname" placeholder="Eg.Makame" class="form-control" tabindex="3" />
+                                <label for="Cadre">Manufacturer Name: </label>
+                                <input type="text" id="lname" name="manufacturer_name" placeholder="Eg.Makame" class="form-control" tabindex="3" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <!-- <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="Cadre">Contat Person: </label>
                                 <input type="text" id="lname" name="mname" placeholder="Eg.Issa" class="form-control" tabindex="3" />
                             </div>
-                        </div>
-                        <div class="col-lg-6">
+                        </div> -->
+                        <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="Cadre"> Supplier Address: </label>
-                                <input type="text" id="lname" name="lname" placeholder="Eg.Makame" class="form-control" tabindex="3" />
+                                <label for="Cadre"> Manufacture Address: </label>
+                                <input type="text" id="lname" name="address_man" placeholder="Eg.Makame" class="form-control" tabindex="3" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="Cadre">Supplier Email: </label>
-                                <input type="text" id="lname" name="phone" placeholder="Eg.0776543211" class="form-control" tabindex="3" />
+                                <label for="Cadre">Manufacture Email: </label>
+                                <input type="text" id="lname" name="man_email" placeholder="Eg.0776543211" class="form-control" tabindex="3" />
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="Cadre">Supplier Phone Number: </label>
-                                <input type="text" id="lname" name="email" placeholder="Eg.someone@gmail.com" class="form-control" tabindex="3" />
+                                <label for="Cadre">Manufacture Phone Number: </label>
+                                <input type="text" id="lname" name="man_phone_no" placeholder="Eg.someone@gmail.com" class="form-control" tabindex="3" />
                             </div>
 
                         </div>

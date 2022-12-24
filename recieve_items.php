@@ -48,56 +48,99 @@ unset($_SESSION['error']);
                         <div class="card-content collapse show">
                             <div class="card-body">
                                 <div class="container-fluid">
-                                    <form class="form form-horizontal row-separator" enctype="multipart/form-data" action="action_addstaff.php" method="POST" id='registerStaff'>
+                                    <form class="form form-horizontal row-separator" enctype="multipart/form-data" action="action_recieve_items.php" method="POST" id='registerStaff'>
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="la la-user"></i> Item Informations</h4>
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label for="firstName">Item Name:<span class="danger">*</span></label>
-                                                    <input type="text" class="form-control required" id="firstname" name="firstName" />
-                                                    <input type="hidden" class="form-control required" value="<?php echo $_SESSION['hospitalCode'] ?> " name="hospitalCode" />
+                                                    <select name="item_id" class="form-control">
+                                                        <option value="">Select Here</option>
+                                                        <?php
+                                                        $db = new DBHelper();
+                                                        $staff = $db->getRows('store', array('order_by' => 'item_id ASC'));
+                                                        ?>
+                                                        <?php if (!empty($staff))
+                                                            foreach ($staff as $st) { { ?>
+                                                                <option value="<?php echo $st['item_id'] ?>"><?php echo $st['item_name'] ?></option>
+                                                        <?php
+                                                                }
+                                                            }
+                                                        ?>
+
+                                                    </select>
                                                     <div class="error" id="errorfirstname"></div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="label-control">Manufacturer</label>
-                                                    <input type="text" class="form-control" id="middlename" name="middleName">
+                                                    <select name="manufacturer_id" class="form-control">
+                                                        <option value="">Select Here</option>
+                                                        <?php
+                                                        $db = new DBHelper();
+                                                        $staff = $db->getRows('manufacturer', array('order_by' => 'manufacturer_id ASC'));
+                                                        ?>
+                                                        <?php if (!empty($staff))
+                                                            foreach ($staff as $st) { { ?>
+                                                                <option value="<?php echo $st['manufacturer_id'] ?>"><?php echo $st['manufacturer_name'] ?></option>
+                                                        <?php
+                                                                }
+                                                            }
+                                                        ?>
+
+                                                    </select>
                                                     <div class="error" id="errormiddlename"></div>
 
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="lastname">Supplier: <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control required" name="lastName" id="lastname">
+                                                    <select name="supplier_id" class="form-control">
+                                                        <option value="">Select Here</option>
+                                                        <?php
+                                                        $db = new DBHelper();
+                                                        $staff = $db->getRows('suppliers', array('order_by' => 'supplier_id ASC'));
+                                                        ?>
+                                                        <?php if (!empty($staff))
+                                                            foreach ($staff as $st) { { ?>
+                                                                <option value="<?php echo $st['supplier_id'] ?>"><?php echo $st['name'] ?></option>
+                                                        <?php
+                                                                }
+                                                            }
+                                                        ?>
+
+                                                    </select>
                                                     <div class="error" id="errorlastname"></div>
                                                 </div>
                                             </div>
+                                            <br>
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label class="label-control">Manufactured Date:<span class="danger">*</span></label>
-                                                    <input type="date" class="form-control" id="physicalAddress" name="physicalAddress">
+                                                    <input type="date" class="form-control" id="physicalAddress" name="manu_date">
                                                     <div class="error" id="errorphysicalAddress"></div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="label-control">Expire Date;<span class="danger">*</span></label>
-                                                    <input type="date" class="form-control" id="dob" name="dateofbirth">
+                                                    <input type="date" class="form-control" id="dob" name="expire_date">
                                                     <div class="error" id="dob"></div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="label-control" for="Contact Number">Item Type:<span class="danger">*</span></label>
-                                                    <select name="item_type" class="form-control">
+                                                    <select name="item_type" class="form-control" id="medical_cat">
                                                         <option value="">Select Here</option>
-                                                        <option value="">Medical Item</option>
-                                                        <option value="">Non Medical Item</option>
-                                                        <option value="">Others</option>
+                                                        <option value="Medical Item">Medical Item</option>
+                                                        <option value="Non Medical Item">Non Medical Item</option>
+                                                        <option value="Others">Others</option>
 
                                                     </select>
                                                     <div class="error" id="errorcont"></div>
                                                 </div>
                                             </div>
+                                            <br>
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-4" id="medy_category" style="display: none;" >
                                                     <label for="Cadree">Medical Item Category:<span class="danger">*</span></label>
 
-                                                    <select name="item_type" class="form-control">
+                                                    <select name="medi_type" class="form-control">
                                                         <option value="">Select Here</option>
                                                         <?php
                                                         $db = new DBHelper();
@@ -117,14 +160,14 @@ unset($_SESSION['error']);
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="Cadree">Quantity:<span class="danger">*</span></label>
-                                                    <input type="text" class="form-control" id="cont" name="email">
+                                                    <input type="text" class="form-control" id="cont" name="quantity">
                                                     <div class="error" id="errorcont"></div>
                                                     <div class="error" id="errorcadre">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="Cadree">Cost:<span class="danger">*</span></label>
-                                                    <input type="text" class="form-control" id="cont" name="email">
+                                                    <input type="text" class="form-control" id="cont" name="price">
                                                     <div class="error" id="errorcont"></div>
                                                     <div class="error" id="errorcadre">
                                                     </div>
@@ -136,7 +179,7 @@ unset($_SESSION['error']);
                                         <br>
                                         <div class="row" style="margin-left: 1px;">
                                             <div class="col-md-4">
-                                                <button type="submit" name="action_type" value="addstaff" class="btn btn-primary">Submit</button>
+                                                <button type="submit" name="action_type" value="add" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
 
@@ -397,5 +440,20 @@ unset($_SESSION['error']);
                             form.submit();
                         }
                     });
+                });
+            </script>
+            <script>
+                $("#medical_cat").change(function() {
+                    var data = $(this).val()
+                    // alert(data);
+                    if (data == 'Medical Item') {
+                        $("#medy_category").show();
+                    } else {
+                        $("#medy_category").hide();
+
+                        $("#doctorsAvailable").hide();
+                    }
+
+
                 });
             </script>
