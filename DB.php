@@ -3332,6 +3332,38 @@ AND service.clinicCode = hospital_clinic.clinicCode and service_cost.serviceCode
       }
   }
 
+  public function searchMedicineAutocomplete($search_text)
+    {
+        try {
+            $query = $this->conn->prepare("SELECT * from store where item_name LIKE :search");
+            $query->execute(array(':search' => '%' . $search_text . '%'));
+            $data = array();
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row['item_name'];
+                //$data[] = $row['firstName'];
+            }
+            return $data;
+        } catch (PDOException $exception) {
+            echo "Getting Data error: " . $exception->getMessage();
+        }
+    }
+
+        public function searchItems($search_text)
+    {
+        try {
+            $query = $this->conn->prepare("SELECT * from store where item_name LIKE :search");
+            $query->execute(array(':search' => '%' . $search_text . '%'));
+            $data = array();
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $data[] = $row;
+            }
+            return $data;
+        } catch (PDOException $exception) {
+            echo "Getting Data error: " . $exception->getMessage();
+        }
+    }
+    
+
 
 
 }

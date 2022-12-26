@@ -86,6 +86,7 @@ unset($_SESSION['msg']);
                                     <th>No</th>
                                     <th style="width:150px;">Item Name</th>
                                     <th>Description</th>
+                                    <th>Quantity</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -102,6 +103,7 @@ unset($_SESSION['msg']);
                                         $x++;
                                         $item_id = $st['item_id'];
                                         $item_name = $st['item_name'];
+                                        $item_quantity = $st['quantity'];
                                         $item_description = $st['item_description'];
                                         $status = $st['status'];
 
@@ -111,6 +113,7 @@ unset($_SESSION['msg']);
                                             <td><?php echo $x; ?></td>
                                             <td><?php echo $item_name; ?></td>
                                             <td><?php echo $item_description; ?></td>
+                                            <td><?php if($item_quantity != ''){echo $item_quantity;}else{echo '-';} ?></td>
                                             <td><?php if ($status == 1) {
                                                     echo 'Active';
                                                 } else {
