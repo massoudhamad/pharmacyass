@@ -35,7 +35,7 @@ try {
 
             $update_store_data = array(
                 'quantity' => $toatlQuantity,
-                // 'price' => $_POST['price'],
+                'expire_date' => $_POST['expire_date'],
                 // 'supplier_id' => $_POST['supplier_id'],
                 // 'manu_date' => $_POST['manu_date'],
                 // 'expire_date' => $_POST['expire_date'],

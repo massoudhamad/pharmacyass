@@ -85,45 +85,49 @@ unset($_SESSION['msg']);
                                 <tr>
                                     <th>No</th>
                                     <th style="width:150px;">Product Name</th>
-                                    <th>Category</th>
+                                    <th>Quantity</th>
                                     <th>Manufactured By</th>
                                     <th>Manufactured Date</th>
                                     <th>Expire Date</th>
-                                    <th>Status</th>
+                                    <!-- <th>Status</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $db = new DBHelper();
-                                $staff = $db->getRows('manufacturer', array('order_by' => 'manufacturer_id ASC'));
+                                $staff = $db->getRecievedItems();
+                                // var_dump($staff)
                                 ?>
                                 <?php if (!empty($staff)) {
 
                                     $x = 0;
                                     foreach ($staff as $st) {
                                         $x++;
-                                        $manufacturer_name = $st['manufacturer_name'];
-                                        $contact_person = $st['contact_person'];
-                                        $email = $st['man_email'];
-                                        $man_website = $st['man_website'];
+                                        
+                                        $item_id = $st['item_id'];
+                                        $item_name = $st['item_name'];
+                                        $quantity = $st['quantity'];
+                                        $expire_date = $st['expire_date'];
+                                        $manufacturer_id = $st['manufacturer_id'];
                                         $status = $st['status'];
-                                        $address = $st['address_man'];
+                                        $manufactured_date = $st['manufactured_date'];
                                         $phone = $st['man_phone_no'];
                                         $manufacturer_id = $st['manufacturer_id'];
-                                        
+
 
 
                                 ?>
                                         <tr>
                                             <td><?php echo $x; ?></td>
-                                            <td><?php echo $name;?></td>
-                                            <td><?php echo $address; ?></td>
-                                            <td><?php echo $email; ?></td>
-                                            <td><?php echo $contact_person; ?></td>
-                                            <td><?php echo $phone; ?></td>
+                                            <td><?php echo $item_name; ?></td>
+                                            <td><?php echo $quantity; ?></td>
+                                            <td><?php echo $db->getData('manufacturer', 'manufacturer_name', 'manufacturer_id', $manufacturer_id); ?></td>
+                                            <td><?php echo $manufactured_date; ?></td>
+                                            <td><?php echo $expire_date; ?></td>
+                                            <!-- <td><?php echo $phone; ?></td> -->
                                             <td>
-                                                <a type="button" class="btn  btn-info btn-sm" title="Update Staff Information" href="index3.php?sp=edit_staff&id=<?php echo $db->my_simple_crypt($staffId, 'e') ?>"><i class="ft-edit"></i></a>
+                                                <a type="button" class="btn  btn-info btn-sm" title="Update Staff Information" href="index3.php?sp=edit_receive_items&id=<?php echo $db->my_simple_crypt($item_id, 'e') ?>"><i class="ft-edit"></i></a>
                                             </td>
                                         </tr>
                                 <?php }
