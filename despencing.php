@@ -182,7 +182,7 @@ $roleCode = $_SESSION['role'];
                 <tr>
                   <th>S/n No.</th>
                   <th>Item Name</th>
-                  <th>Quantity</th>
+                  <th>Quantity in Store</th>
                   <th>Expire Date</th>
                   <th>status</th>
                   <th>Action</th>
@@ -200,6 +200,7 @@ $roleCode = $_SESSION['role'];
                   $item_id = $patient['item_id'];
                   $item_name = $patient['item_name'];
                   $Quantity = $patient['quantity'];
+                  $store_quantity = $patient['store_quantity'];
                   $expire_date = $patient['expire_date'];
                   $status = $patient['status'];
                   // $dob=$patient['dob'];
@@ -216,7 +217,7 @@ $roleCode = $_SESSION['role'];
                 <tr>
                   <td><?php echo $count + 1 ?></td>
                   <td><?php echo $item_name ?></td>
-                  <td><?php echo $Quantity ?></td>
+                  <td><?php echo $store_quantity ?></td>
                   <td><?php echo $expire_date ?></td>
                   <td><?php echo $item_name ?></td>
                   <td>

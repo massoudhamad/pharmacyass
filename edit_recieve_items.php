@@ -34,6 +34,29 @@ unset($_SESSION['exist']);
 unset($_SESSION['error']);
 ?>
 
+<?php
+$db = new DBHelper();
+$id = $db->my_simple_crypt($_REQUEST['id'], 'd');
+$staff = $db->getRows('recieved_items', array('where' => array('recieved_items_id' => $id)));
+// var_dump($staff);
+if (!empty($staff)) {
+    $x = 0;
+    foreach ($staff as $st) {
+        $x++;
+        $item_id = $st['item_id'];
+        $recieved_items_id = $st['recieved_items_id'];
+        $supplier_id = $st['supplier_id'];
+        $manufacturer_id = $st['manufacturer_id'];
+        $manufactured_date = $st['manufactured_date'];
+        $expire_date = $st['expire_date'];
+        $item_type = $st['item_type'];
+        $quantity = $st['quantity'];
+        $medi_type = $st['medi_type'];
+        $price = $st['price'];
+    }
+}
+?>
+
 <div class="card-content">
     <div class="card-body">
         <div class="card-header">
@@ -57,7 +80,6 @@ unset($_SESSION['error']);
                                                     <select name="item_id" class="form-control">
                                                         <option value="">Select Here</option>
                                                         <?php
-                                                        $db = new DBHelper();
                                                         $staff = $db->getRows('store', array('order_by' => 'item_id ASC'));
                                                         ?>
                                                         <?php if (!empty($staff))
@@ -115,12 +137,13 @@ unset($_SESSION['error']);
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label class="label-control">Manufactured Date:<span class="danger">*</span></label>
-                                                    <input type="date" class="form-control" id="physicalAddress" name="manu_date">
+                                                    <input type="date" class="form-control" id="physicalAddress" name="manu_date" value="<?php echo $manufactured_date?>" >
                                                     <div class="error" id="errorphysicalAddress"></div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="label-control">Expire Date;<span class="danger">*</span></label>
-                                                    <input type="date" class="form-control" id="dob" name="expire_date">
+                                                    <input type="" name="recieved_items_id" value="<?php echo $recieved_items_id?>">
+                                                    <input type="date" class="form-control" id="dob" name="expire_date" value="<?php echo $expire_date?>">
                                                     <div class="error" id="dob"></div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -137,7 +160,7 @@ unset($_SESSION['error']);
                                             </div>
                                             <br>
                                             <div class="row">
-                                                <div class="col-md-4" id="medy_category" style="display: none;" >
+                                                <div class="col-md-4" id="medy_category" style="display: none;">
                                                     <label for="Cadree">Medical Item Category:<span class="danger">*</span></label>
 
                                                     <select name="medi_type" class="form-control">
@@ -160,14 +183,14 @@ unset($_SESSION['error']);
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="Cadree">Quantity:<span class="danger">*</span></label>
-                                                    <input type="text" class="form-control" id="cont" name="quantity">
+                                                    <input type="text" class="form-control" id="cont" value="<?php echo $quantity?>" name="quantity">
                                                     <div class="error" id="errorcont"></div>
                                                     <div class="error" id="errorcadre">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="Cadree">Cost:<span class="danger">*</span></label>
-                                                    <input type="text" class="form-control" id="cont" name="price">
+                                                    <input type="text" class="form-control" id="cont" value="<?php echo $price?>" name="price">
                                                     <div class="error" id="errorcont"></div>
                                                     <div class="error" id="errorcadre">
                                                     </div>
@@ -179,7 +202,7 @@ unset($_SESSION['error']);
                                         <br>
                                         <div class="row" style="margin-left: 1px;">
                                             <div class="col-md-4">
-                                                <button type="submit" name="action_type" value="add" class="btn btn-primary">Submit</button>
+                                                <button type="submit" name="action_type" value="editstaff" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
 

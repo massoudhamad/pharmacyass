@@ -106,6 +106,7 @@ unset($_SESSION['msg']);
                                         $x++;
                                         
                                         $item_id = $st['item_id'];
+                                        $recieved_items_id = $st['recieved_items_id'];
                                         $item_name = $st['item_name'];
                                         $quantity = $st['quantity'];
                                         $expire_date = $st['expire_date'];
@@ -127,7 +128,7 @@ unset($_SESSION['msg']);
                                             <td><?php echo $expire_date; ?></td>
                                             <!-- <td><?php echo $phone; ?></td> -->
                                             <td>
-                                                <a type="button" class="btn  btn-info btn-sm" title="Update Staff Information" href="index3.php?sp=edit_receive_items&id=<?php echo $db->my_simple_crypt($item_id, 'e') ?>"><i class="ft-edit"></i></a>
+                                                <a type="button" class="btn  btn-info btn-sm" title="Update Staff Information" href="index3.php?sp=edit_receive_items&id=<?php echo $db->my_simple_crypt($recieved_items_id, 'e') ?>"><i class="ft-edit"></i></a>
                                             </td>
                                         </tr>
                                 <?php }

@@ -49,7 +49,7 @@ try {
             }
             $boolStatus = true;
             $_SESSION['msg'] = "Staff Registered Successfully";
-            header('Location:index3.php?sp=receive_items#&msg=succ');
+            header('Location:index3.php?sp=despencing#&msg=succ');
         } else if ($_REQUEST['action_type'] == 'editstaff') {
 
             $storeData = array(

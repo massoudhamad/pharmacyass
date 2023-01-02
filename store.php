@@ -103,7 +103,7 @@ unset($_SESSION['msg']);
                                         $x++;
                                         $item_id = $st['item_id'];
                                         $item_name = $st['item_name'];
-                                        $item_quantity = $st['quantity'];
+                                        $item_quantity = $st['store_quantity'];
                                         $item_description = $st['item_description'];
                                         $status = $st['status'];
 
