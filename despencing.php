@@ -231,83 +231,40 @@ $roleCode = $_SESSION['role'];
                         <h4 class="modal-title" id="myModalLabel">Add New Record</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       </div>
-                      <form method="Post" action="action_users.php" id='cadree'>
+                      <form method="Post" action="action_dispencing.php" id='cadree'>
                         <div class="modal-body">
                           <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                               <div class="form-group">
-                                <label for="Cadre">User Name: </label>
-                                <input type="text" id="lname" name="uname" value="<?php echo $cadre['email']; ?>" class="form-control" tabindex="3" />
+                                <label for="Cadre">Item Name: </label>
+                                <input type="hidden" name="item_id" value="<?php echo $item_id?>">
+                                <input type="text" id="lname" name="uname" readonly value="<?php echo $item_name; ?>" class="form-control" tabindex="3" />
                               </div>
                             </div>
-                            <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="Cadre">First Name: </label>
-                                <input type="text" id="lname" name="fname" value="<?php echo $cadre['firstName']; ?>" class="form-control" tabindex="3" />
-                              </div>
-                            </div>
+
                           </div>
                           <div class="row">
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="Cadre">Middle Name: </label>
-                                <input type="text" id="lname" name="mname" value="<?php echo $cadre['middleName']; ?>" class="form-control" tabindex="3" />
+                                <label for="Cadre">Expire Date: </label>
+                                <input type="text" id="lname" name="expire_date" readonly value="<?php echo $expire_date; ?>" class="form-control" tabindex="3" />
                               </div>
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group">
-                                <label for="Cadre">Last Name: </label>
-                                <input type="text" id="lname" name="lname" value="<?php echo $cadre['lastName']; ?>" class="form-control" tabindex="3" />
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="Cadre">Phone: </label>
-                                <input type="text" id="lname" name="phone" value="<?php echo $cadre['phoneNumber']; ?>" class="form-control" tabindex="3" />
-                              </div>
-                            </div>
-                            <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="Cadre">Gender: </label>
-                                <select name='gender' class=form-control>
-                                  <option value='<?php echo $cadre['gender']; ?>'>
-                                    <?php echo $cadre['gender']; ?></option>
-                                  <option value=''>select Here</option>
-                                  <option value='Male'>Male</option>
-                                  <option value='Female'>Female</option>
-                                </select>
+                                <label for="Cadre">Quantity in Store: </label>
+                                <input type="text" id="lname" name="lname" readonly value="<?php echo $Quantity; ?>" class="form-control" tabindex="3" />
                               </div>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-lg-12">
                               <div class="form-group">
-                                <label for="Cadre">Email: </label>
-                                <input type="text" id="lname" name="email" value="<?php echo $cadre['email']; ?>" class="form-control" tabindex="3" />
+                                <label for="Cadre">Quantity to be Sold: </label>
+                                <input type="text"  name="quantity_to_be_sold" class="form-control"  />
                               </div>
                             </div>
-                          </div>
-                          <div class="row">
 
-                            <div class="col-lg-12">
-                              <div class="form-group">
-                                <label for="Cadre">Role Name: </label>
-
-                                <select name="primaryroleID" class="form-control">
-                                  <?php
-                                  $userRoless = $db->getRows('roles', array('order_by' => 'roleCode ASC'));
-                                  foreach ($userRoless as $usroles) { ?>
-                                    <option value='<?php echo $usroles['roleCode']; ?>'>
-                                      <?php echo $db->getData("roles", "role", "roleCode", $usroles['roleCode']); ?>
-                                    </option>
-                                  <?php
-                                  }
-                                  ?>
-                                </select>
-                              </div>
-                            </div>
                           </div>
                         </div>
 
@@ -315,8 +272,8 @@ $roleCode = $_SESSION['role'];
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="9">Cancel</button>
-                          <input type="hidden" name="action_type" value="edit" />
-                          <input type="submit" name="doSubmit" value="Save" class="btn btn-primary" tabindex="8">
+                          <input type="hidden" name="action_type" value="add" />
+                          <input type="submit" name="doSubmit" value="Dispence" class="btn btn-primary" tabindex="8">
                           <input type="hidden" name="userID" value="<?php echo $cadre['userID']; ?>" class="btn btn-primary" tabindex="8">
                         </div>
                     </div>
