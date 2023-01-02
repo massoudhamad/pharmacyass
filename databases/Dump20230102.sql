@@ -26,17 +26,15 @@ DROP TABLE IF EXISTS `despencing`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `despencing` (
   `despencingID` int NOT NULL AUTO_INCREMENT,
-  `despencingType` int DEFAULT NULL,
   `specification` varchar(100) DEFAULT NULL,
   `createdDate` datetime DEFAULT NULL,
   `modifiedDate` datetime DEFAULT NULL,
   `createdBy` int DEFAULT NULL,
   `quantity_type` int DEFAULT NULL,
   `prediscribed_quantity` int DEFAULT NULL,
-  `drugID` int DEFAULT NULL,
-  `sales_reference` varchar(100) DEFAULT NULL,
+  `item_id` int DEFAULT NULL,
   PRIMARY KEY (`despencingID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +43,7 @@ CREATE TABLE `despencing` (
 
 LOCK TABLES `despencing` WRITE;
 /*!40000 ALTER TABLE `despencing` DISABLE KEYS */;
+INSERT INTO `despencing` VALUES (1,NULL,'2023-01-02 19:17:14','2023-01-02 19:17:14',1,NULL,20,6),(2,NULL,'2023-01-02 19:18:09','2023-01-02 19:18:09',1,NULL,20,6);
 /*!40000 ALTER TABLE `despencing` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -322,8 +321,8 @@ CREATE TABLE `recieved_items` (
   `item_id` int DEFAULT NULL,
   `supplier_id` int DEFAULT '1',
   `manufacturer_id` int DEFAULT '1',
-  `manufactured_date` datetime DEFAULT NULL,
-  `expire_date` datetime DEFAULT NULL,
+  `manufactured_date` date DEFAULT NULL,
+  `expire_date` date DEFAULT NULL,
   `item_type` varchar(45) DEFAULT NULL,
   `quantity` int DEFAULT NULL,
   `medi_type` varchar(45) DEFAULT NULL,
@@ -334,7 +333,7 @@ CREATE TABLE `recieved_items` (
   `status` int DEFAULT NULL,
   PRIMARY KEY (`recieved_items_id`),
   UNIQUE KEY `item_id_UNIQUE` (`item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,7 +342,7 @@ CREATE TABLE `recieved_items` (
 
 LOCK TABLES `recieved_items` WRITE;
 /*!40000 ALTER TABLE `recieved_items` DISABLE KEYS */;
-INSERT INTO `recieved_items` VALUES (1,1,1,1,'2022-12-23 00:00:00','2022-12-27 00:00:00','Others',340,'','2022-12-24 18:40:37',500,'2022-12-24 18:40:37',1,1);
+INSERT INTO `recieved_items` VALUES (1,1,1,1,'2022-12-23','2022-12-27','Others',340,'','2022-12-24 18:40:37',500,'2022-12-24 18:40:37',1,1),(2,6,1,1,'2023-01-01','2023-01-03','Non Medical Item',400,'','2023-01-02 19:02:16',2500,'2023-01-02 19:02:16',1,1);
 /*!40000 ALTER TABLE `recieved_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,13 +482,14 @@ CREATE TABLE `store` (
   `item_name` varchar(145) DEFAULT NULL,
   `item_description` varchar(145) DEFAULT NULL,
   `status` int DEFAULT NULL,
-  `quantity` varchar(245) DEFAULT NULL,
+  `store_quantity` varchar(245) DEFAULT NULL,
+  `expire_date` datetime DEFAULT NULL,
   `createdDate` datetime DEFAULT NULL,
   `modifiedDate` datetime DEFAULT NULL,
   `createdBy` int DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   UNIQUE KEY `item_id_UNIQUE` (`item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -498,7 +498,7 @@ CREATE TABLE `store` (
 
 LOCK TABLES `store` WRITE;
 /*!40000 ALTER TABLE `store` DISABLE KEYS */;
-INSERT INTO `store` VALUES (1,'Panadol','This si Panadol Description',1,'340','2022-12-24 14:28:43','2022-12-24 18:40:37',1),(2,'Citrozen','Speacila Medicine Item for Sleeping',1,NULL,'2022-12-24 14:32:50','2022-12-24 14:32:50',1),(3,'Magnezium','Medicine Spacial for Gas in the stomach',1,NULL,'2022-12-24 14:37:15','2022-12-24 14:37:15',1),(4,'Nivea Deoderant','Deodorant form body odor',1,NULL,'2022-12-24 14:37:57','2022-12-24 14:37:57',1);
+INSERT INTO `store` VALUES (1,'Panadol','This si Panadol Description',1,'340',NULL,'2022-12-24 14:28:43','2022-12-24 18:40:37',1),(2,'Citrozen','Speacila Medicine Item for Sleeping',1,NULL,NULL,'2022-12-24 14:32:50','2022-12-24 14:32:50',1),(3,'Magnezium','Medicine Spacial for Gas in the stomach',1,NULL,NULL,'2022-12-24 14:37:15','2022-12-24 14:37:15',1),(4,'Nivea Deoderant','Deodorant form body odor',1,NULL,NULL,'2022-12-24 14:37:57','2022-12-24 14:37:57',1),(6,'Panadol (Kenya)','This si Panadol from kenya',1,'380','2023-01-03 00:00:00','2023-01-02 19:00:49','2023-01-02 19:18:09',1);
 /*!40000 ALTER TABLE `store` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,4 +616,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-24 19:11:26
+-- Dump completed on 2023-01-02 19:53:20

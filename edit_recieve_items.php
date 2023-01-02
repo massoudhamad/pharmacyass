@@ -142,7 +142,7 @@ if (!empty($staff)) {
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="label-control">Expire Date;<span class="danger">*</span></label>
-                                                    <input type="" name="recieved_items_id" value="<?php echo $recieved_items_id?>">
+                                                    <input type="hidden" name="recieved_items_id" value="<?php echo $recieved_items_id?>">
                                                     <input type="date" class="form-control" id="dob" name="expire_date" value="<?php echo $expire_date?>">
                                                     <div class="error" id="dob"></div>
                                                 </div>
