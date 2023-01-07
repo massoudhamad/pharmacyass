@@ -82,6 +82,9 @@ switch ((isset($_GET['sp']) ? $_GET['sp'] : '')) {
     case 'receive_items':
         include('recieve_items.php');
         break;
+    case 'edit_receive_items':
+        include('edit_recieve_items.php');
+        break;
 
 
 
