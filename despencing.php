@@ -186,11 +186,6 @@ $roleCode = $_SESSION['role'];
                   <th>Expire Date</th>
                   <th>status</th>
                   <th>Action</th>
-                  <!-- <th>Address</th>
-                                <th>Phone Number</th>
-                                <th>Health Scheme</th>
-                                <th>Add Visit</th> -->
-
                 </tr>
               </thead>
               <tbody>
@@ -203,14 +198,7 @@ $roleCode = $_SESSION['role'];
                   $store_quantity = $patient['store_quantity'];
                   $expire_date = $patient['expire_date'];
                   $status = $patient['status'];
-                  // $dob=$patient['dob'];
-                  // $sex=$patient['sex'];
-                  // $address=$patient['address'];
-                  // $telNumber=$patient['telNumber'];
-                  // $healthSchemeID=$patient['paymenttypeCode'];
-                  // $name="$fname $mname $lname";
-                  // $healthScheme=$db->getData("paymenttype","paymentTypeName","paymenttypeCode",$healthSchemeID);
-                }
+                  }
                 ?>
 
 

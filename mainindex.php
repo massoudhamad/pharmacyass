@@ -85,6 +85,9 @@ switch ((isset($_GET['sp']) ? $_GET['sp'] : '')) {
     case 'edit_receive_items':
         include('edit_recieve_items.php');
         break;
+    case 'expiredProducts':
+        include('expiredProducts.php');
+        break;
 
 
 

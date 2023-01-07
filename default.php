@@ -67,19 +67,21 @@ $roleCode = $_SESSION['role'];
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="card pull-up">
                         <div class="card-content">
-                            <div class="card-body">
-                                <div class="media d-flex">
-                                    <div class="align-self-center">
-                                        <i class="la la-user-md font-large-2 success"></i>
-                                    </div>
-                                    <div class="media-body text-right">
-                                        <h5 class="text-muted text-bold-500">No of Product Sold Today</h5>
-                                        <!-- <h3 class="text-bold-600"><?php echo $db->getTotalOtherStaffs() ?></h3> -->
-                                        <h3 class="text-bold-600">450</h3>
+                            <a href="index3.php?sp=expiredProducts">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="align-self-center">
+                                            <i class="la la-user-md font-large-2 success"></i>
+                                        </div>
+                                        <div class="media-body text-right">
+                                            <h5 class="text-muted text-bold-500">Expired Products</h5>
+                                            <!-- <h3 class="text-bold-600"><?php echo $db->getTotalOtherStaffs() ?></h3> -->
+                                            <h3 class="text-bold-600">450</h3>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
