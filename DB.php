@@ -3369,6 +3369,26 @@ public function getExpiredItems($today){
     }
 }
 
+
+public function countExpiredItems($today)
+{
+   try
+   {
+     $sql = $this->conn->prepare("select * from store where  expire_date < '$today'");
+     $sql->execute();
+        $row=$sql->rowCount();
+
+        return $row;
+    
+      
+   
+   }catch(PDOException $e)
+   {
+       echo $e->getMessage();
+   }
+}
+
+
   public function searchMedicineAutocomplete($search_text)
     {
         try {

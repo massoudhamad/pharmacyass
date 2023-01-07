@@ -75,8 +75,8 @@ $roleCode = $_SESSION['role'];
                                         </div>
                                         <div class="media-body text-right">
                                             <h5 class="text-muted text-bold-500">Expired Products</h5>
-                                            <!-- <h3 class="text-bold-600"><?php echo $db->getTotalOtherStaffs() ?></h3> -->
-                                            <h3 class="text-bold-600">450</h3>
+                                            <h3 class="text-bold-600"><?php echo $db->countExpiredItems($today) ?></h3>
+                                            <!-- <h3 class="text-bold-600">450</h3> -->
 
                                         </div>
                                     </div>
