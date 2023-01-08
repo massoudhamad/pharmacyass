@@ -20,7 +20,7 @@ $today = date("Y-m-d");
                 <ul class="menu-content">
                 <li><a class="menu-item" href="index3.php?sp=store"><i></i><span>Store</span></a></li>
                     <li><a class="menu-item" href="index3.php?sp=incoming_purchase"><i></i><span>Incoming Purchase</span></a></li>
-                    <li><a class="menu-item" href="index3.php?sp=healthfacility"><i></i><span>Product Pricing</span></a></li>
+                    <!-- <li><a class="menu-item" href="index3.php?sp=healthfacility"><i></i><span>Product Pricing</span></a></li> -->
                     <!-- <li><a class="menu-item" href="index3.php?sp=select_service"><i></i><span>Reorder Level</span></a>
                     </li> -->
                     <!-- <li><a class="menu-item" href="index3.php?sp=select_service"><i></i><span>Set Reorder Level</span></a>
@@ -36,11 +36,11 @@ $today = date("Y-m-d");
 
             <li class=" nav-item"><a href="#"><i class="la la-cogs"></i><span class="menu-title" data-i18n="nav.templates.main">Configurations</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="index3.php?sp=clinic"><i></i><span>Pharmacy Profile</span></a></li>
+                    <!-- <li><a class="menu-item" href="index3.php?sp=clinic"><i></i><span>Pharmacy Profile</span></a></li> -->
                     <li><a class="menu-item" href="index3.php?sp=suppliers"><i></i><span>Supplier</span></a></li>
                     <li><a class="menu-item" href="index3.php?sp=manufacturers"><i></i><span>Manufacturers</span></a></li>
 
-                    <li><a class="menu-item" href="index3.php?sp=product_types"><i></i><span>Product Types</span></a></li>
+                    <!-- <li><a class="menu-item" href="index3.php?sp=product_types"><i></i><span>Product Types</span></a></li> -->
                     <!-- <li><a class="menu-item" href="index3.php?sp=select_service"><i></i><span>Reorder Level</span></a>
                     </li>
                     <li><a class="menu-item" href="index3.php?sp=select_service"><i></i><span>Set Reorder Level</span></a>

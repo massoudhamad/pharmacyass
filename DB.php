@@ -3351,6 +3351,44 @@ AND service.clinicCode = hospital_clinic.clinicCode and service_cost.serviceCode
     }
 }
 
+public function getExpiredItems($today){
+    try{
+      $sql = $this->conn->prepare("select * from store where  expire_date < '$today'");
+      $sql->execute();
+      $data=array();
+      while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+          $data[]=$row;
+      }
+      return $data;
+     
+       
+    
+    }catch(PDOException $e)
+    {
+        echo $e->getMessage();
+    }
+}
+
+
+public function countExpiredItems($today)
+{
+   try
+   {
+     $sql = $this->conn->prepare("select * from store where  expire_date < '$today'");
+     $sql->execute();
+        $row=$sql->rowCount();
+
+        return $row;
+    
+      
+   
+   }catch(PDOException $e)
+   {
+       echo $e->getMessage();
+   }
+}
+
+
   public function searchMedicineAutocomplete($search_text)
     {
         try {

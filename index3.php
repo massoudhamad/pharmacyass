@@ -605,7 +605,7 @@ if ($userID == ' ') {
                             <div class='dropdown-menu dropdown-menu-right'>
                                 <!-- <a class = 'dropdown-item' href = '#'><i class = 'ft-user'></i><?php echo $name; ?></a> -->
                                 <a class='dropdown-item' href='#'><i class='ft-mail'>
-                                        <span><?php echo $_SESSION['role'] ?></span>
+                                        <span><?php if($_SESSION['role'] == 1){echo 'Administartor';}else{echo 'Seller';} ?></span>
                                     </i></span></i></a>
                                 <a class='dropdown-item' href='index3.php?sp=change_password'><i class='ft-mail'></i>Change Password</a>
                                 <a class='dropdown-item' href='index3.php?sp=change_password'><i class='ft-user'></i>Profile Information</a>
