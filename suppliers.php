@@ -108,8 +108,6 @@ unset($_SESSION['msg']);
                                         $address = $st['address'];
                                         $phone = $st['phone'];
                                         $supplier_id = $st['supplier_id'];
-                                        
-
 
                                 ?>
                                         <tr>
@@ -120,7 +118,7 @@ unset($_SESSION['msg']);
                                             <td><?php echo $contact_person; ?></td>
                                             <td><?php echo $phone; ?></td>
                                             <td>
-                                                <a type="button" class="btn  btn-info btn-sm" title="Update Staff Information" href="index3.php?sp=edit_staff&id=<?php echo $db->my_simple_crypt($staffId, 'e') ?>"><i class="ft-edit"></i></a>
+                                                <!-- <a type="button" class="btn  btn-info btn-sm" title="Update Staff Information" href="index3.php?sp=edit_staff&id=<?php echo $db->my_simple_crypt($staffId, 'e') ?>"><i class="ft-edit"></i></a> -->
                                             </td>
                                         </tr>
                                 <?php }
