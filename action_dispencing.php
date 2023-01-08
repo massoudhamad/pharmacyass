@@ -66,11 +66,11 @@ try {
             $conditions = array('item_id' => $item_id);
             $update = $db->update('store', $userData, $conditions);
             $_SESSION['error'] = "Staff Update Successfully";
-            header('Location:index3.php?sp=receive_items#&msg=succ');
+            header('Location:index3.php?sp=despencing#&msg=succ');
         }
     }
 } catch (PDOException $ex) {
     $_SESSION['error'] = "OOps Something Occured";
-    //header( 'Location:index3.php?sp=registerstaff&msg=error' );
+    header( 'Location:index3.php?sp=despencing&msg=error' );
     echo $ex;
 }
