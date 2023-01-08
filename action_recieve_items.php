@@ -51,6 +51,8 @@ try {
             $_SESSION['msg'] = "Staff Registered Successfully";
             header('Location:index3.php?sp=receive_items#&msg=succ');
         } else if ($_REQUEST['action_type'] == 'editstaff') {
+            //this is comments"
+            
 
             
             $recieve_item_Data = array(
