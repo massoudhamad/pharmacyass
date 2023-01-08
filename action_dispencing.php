@@ -24,20 +24,25 @@ try {
 
             $staff = $db->getRows('store', array('where' => array('item_id' => $item_id)));
             if (!empty($staff)) {
+                // var_dump($staff);
                 foreach ($staff as $st){
-                    $quantity = $st['quantity'];
+                    $quantity = $st['store_quantity'];
                 }
                 $toatlQuantity = $quantity - $_POST['quantity_to_be_sold'];
             }
 
+            // echo $toatlQuantity;
+
             $update_store_data = array(
-                'quantity' => $toatlQuantity,
+                'store_quantity' => $toatlQuantity,
                 // 'expire_date' => $_POST['expire_date'],
                 // 'supplier_id' => $_POST['supplier_id'],
                 // 'manu_date' => $_POST['manu_date'],
                 // 'expire_date' => $_POST['expire_date'],
 
             );
+
+            // var_dump(($update_store_data));
 
 
             $insert = $db->insert('despencing', $despencing_Data);

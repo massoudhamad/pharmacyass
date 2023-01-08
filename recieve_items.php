@@ -137,7 +137,7 @@ unset($_SESSION['error']);
                                             </div>
                                             <br>
                                             <div class="row">
-                                                <div class="col-md-4" id="medy_category" style="display: none;" >
+                                                <!-- <div class="col-md-4" id="medy_category" style="display: none;" >
                                                     <label for="Cadree">Medical Item Category:<span class="danger">*</span></label>
 
                                                     <select name="medi_type" class="form-control">
@@ -157,7 +157,7 @@ unset($_SESSION['error']);
                                                     </select>
                                                     <div class="error" id="errorcadre">
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md-4">
                                                     <label for="Cadree">Quantity:<span class="danger">*</span></label>
                                                     <input type="text" class="form-control" id="cont" name="quantity">
