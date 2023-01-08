@@ -75,7 +75,7 @@ unset($_SESSION['msg']);
                     <div class="card-header">
 
                         <div class="pull-right" style="margin-right:40px">
-                            <a class="btn btn-info round btn-sm" data-toggle="modal" data-target="#add_new_supplier_modal" style="color:white;"><i class="la la-plus font-small-2"></i>Register Supplier</a>
+                            <a class="btn btn-info round btn-sm" data-toggle="modal" data-target="#add_new_supplier_modal" style="color:white;"><i class="la la-plus font-small-2"></i>Register Manufacturer</a>
                         </div>
 
                     </div>
@@ -84,7 +84,7 @@ unset($_SESSION['msg']);
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th style="width:150px;">Supplier</th>
+                                    <th style="width:150px;">Manufacturer Name</th>
                                     <th>Address</th>
                                     <th>Eamil</th>
                                     <th>Contact Person</th>
@@ -116,13 +116,13 @@ unset($_SESSION['msg']);
                                 ?>
                                         <tr>
                                             <td><?php echo $x; ?></td>
-                                            <td><?php echo $name;?></td>
+                                            <td><?php echo $manufacturer_name;?></td>
                                             <td><?php echo $address; ?></td>
                                             <td><?php echo $email; ?></td>
                                             <td><?php echo $contact_person; ?></td>
                                             <td><?php echo $phone; ?></td>
                                             <td>
-                                                <a type="button" class="btn  btn-info btn-sm" title="Update Staff Information" href="index3.php?sp=edit_staff&id=<?php echo $db->my_simple_crypt($staffId, 'e') ?>"><i class="ft-edit"></i></a>
+                                                <!-- <a type="button" class="btn  btn-info btn-sm" title="Update Staff Information" href="index3.php?sp=edit_staff&id=<?php echo $db->my_simple_crypt($staffId, 'e') ?>"><i class="ft-edit"></i></a> -->
                                             </td>
                                         </tr>
                                 <?php }
