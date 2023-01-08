@@ -1,6 +1,6 @@
 <?php
-ini_set ('display_errors', 1);
-error_reporting (E_ALL | E_STRICT);
+// ini_set ('display_errors', 1);
+// error_reporting (E_ALL | E_STRICT);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -201,8 +201,8 @@ if(isset($_REQUEST['action_type']) && !empty($_REQUEST['action_type'])){
 }
 }catch (PDOException $ex) {
     $_SESSION['msg'] = 'Something Went Wrong';
-    //header("Location:index3.php?sp=users");
- echo $ex;
+    header("Location:index3.php?sp=users");
+ //echo $ex;
  }
 
 ?>

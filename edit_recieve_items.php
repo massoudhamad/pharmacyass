@@ -71,7 +71,7 @@ if (!empty($staff)) {
                         <div class="card-content collapse show">
                             <div class="card-body">
                                 <div class="container-fluid">
-                                    <form class="form form-horizontal row-separator" enctype="multipart/form-data" action="action_recieve_items.php" method="POST" id='registerStaff'>
+                                    <form class="form form-horizontal row-separator" action="action_recieve_items.php" method="POST" id='registerStaff'>
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="la la-user"></i> Item Informations</h4>
                                             <div class="row">
@@ -160,27 +160,7 @@ if (!empty($staff)) {
                                             </div>
                                             <br>
                                             <div class="row">
-                                                <div class="col-md-4" id="medy_category" style="display: none;">
-                                                    <label for="Cadree">Medical Item Category:<span class="danger">*</span></label>
-
-                                                    <select name="medi_type" class="form-control">
-                                                        <option value="">Select Here</option>
-                                                        <?php
-                                                        $db = new DBHelper();
-                                                        $staff = $db->getRows('product_type', array('order_by' => 'product_type_id ASC'));
-                                                        ?>
-                                                        <?php if (!empty($staff))
-                                                            foreach ($staff as $st) { { ?>
-                                                                <option value="<?php echo $st['product_type_id'] ?>"><?php echo $st['product_type_name'] ?></option>
-                                                        <?php
-                                                                }
-                                                            }
-                                                        ?>
-
-                                                    </select>
-                                                    <div class="error" id="errorcadre">
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="col-md-4">
                                                     <label for="Cadree">Quantity:<span class="danger">*</span></label>
                                                     <input type="text" class="form-control" id="cont" value="<?php echo $quantity?>" name="quantity">
